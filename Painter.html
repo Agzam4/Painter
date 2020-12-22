@@ -73,33 +73,36 @@
         var dirs = [];
         var size = [];
 
-	var px;
-	var py;
+	var px = canvas.width/2;
+	var py = canvas.height/2;
 	var lpx = -1;
 	var lpy = -1;
-	var dir;
-       
+	var dir = 0;
+
+
 	var speed = 0.1;
 
         function init() {
-            px = canvas.width/2;
-            py = canvas.height/2;
             for (i = 0; i < 6; i++) {
                 dirs.push(Math.random()*360);
                 size.push(Math.random()*25 + 5);
+		console.log(dir[i] + "d " + size[i] + "px");
 	    }
             context.fillStyle = "#000";
             context.fillRect(0, 0, 1000, 500);
             setInterval(go, 1000 / 50);
+            context.beginPath();
+            context.lineJoin = 'round';
+	    context.lineWidth = 5;
         }
         init();
 
         var colorH = 0;
 
         function go() {
-            context.fillStyle = 'rgba(0, 0, 0, 0.4)';
-            //context.fillRect(0, 0, 1000, 500);
-
+	    px = canvas.width/2;
+	    py = canvas.height/2;
+	    dir = 0;
 
             for (i = 0; i < dirs.length; i++) {
 		dir += dirs[i];
@@ -112,16 +115,26 @@
 		dirs[i] += speed * Math.pow(-1, i) * i;
 	    }
 
+            //context.fillStyle = 'rgba(0, 0, 0, 0.4)';
+            //context.fillRect(0, 0, 1000, 500);
+
             context.fillStyle = 'hsl(' + colorH % 360 + ', 100%, 50%)';
-            context.arc(px, py, 2.5, 0, 2 * Math.PI, false);
+	    context.strokeStyle= 'hsl(' + colorH % 360 + ', 100%, 50%)';
+            context.lineTo(px,py);
+	    context.stroke();
+            //context.arc(px, py, 2.5, 0, 2 * Math.PI, false);
+            //context.fillRect(px, py, 5, 5);
             context.fillRect(0, 0, 1000, 5);
             context.fillRect(0, 0, 5, 500);
             context.fillRect(0, 495, 1000, 5);
             context.fillRect(995, 0, 5, 500)
 
+
             dir2.style.borderColor = 'hsl(' + colorH % 360 + ', 100%, 50%)';
             dir2.style.color = 'hsl(' + colorH % 360 + ', 100%, 50%)';
             colorH += 1;
+
+	    //console.log(px + " " + py);
         }
 
 
