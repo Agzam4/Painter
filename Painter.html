@@ -78,11 +78,12 @@
 	var lpx = -1;
 	var lpy = -1;
 	var dir;
-
-
+       
 	var speed = 0.1;
 
         function init() {
+            px = canvas.width/2;
+            py = canvas.height/2;
             for (i = 0; i < 6; i++) {
                 dirs.push(Math.random()*360);
                 size.push(Math.random()*25 + 5);
