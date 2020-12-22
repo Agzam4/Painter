@@ -79,6 +79,9 @@
 	var lpy = -1;
 	var dir;
 
+
+	var speed = 0.1;
+
         function init() {
             for (i = 0; i < 6; i++) {
                 dirs.push(Math.random()*360);
@@ -94,7 +97,7 @@
 
         function go() {
             context.fillStyle = 'rgba(0, 0, 0, 0.4)';
-            context.fillRect(0, 0, 1000, 500);
+            //context.fillRect(0, 0, 1000, 500);
 
 
             for (i = 0; i < dirs.length; i++) {
@@ -105,7 +108,7 @@
 		px += size[i] * Math.sin(dir);
 		py += size[i] * Math.cos(dir);
 
-		dirs[id] += speed * Math.pow(-1, i) * i;s
+		dirs[i] += speed * Math.pow(-1, i) * i;
 	    }
 
             context.fillStyle = 'hsl(' + colorH % 360 + ', 100%, 50%)';
@@ -117,54 +120,28 @@
 
             dir2.style.borderColor = 'hsl(' + colorH % 360 + ', 100%, 50%)';
             dir2.style.color = 'hsl(' + colorH % 360 + ', 100%, 50%)';
-           if (dir) {
-                dir2.style.background = 'hsl(' + colorH % 360 + ', 100%, 25%)';
-            } else {
-                dir2.style.background = "#000";
-            }hsl(' + colorH % 360 + ', 100%, 50%)';stylesheet.cssRules.length);
             colorH += 1;
         }
 
 
 
-        document.addEventListener('keydown', function (e) {
+        /*document.addEventListener('keydown', function (e) {
             if (e.keyCode == 'Y'.charCodeAt()) {
                 stoptime = !stoptime;
             }
         });
 
 
-        mag.onclick = function (e) { // обрабатываем касания пальцем ontouchend onclick
+        mag.onclick = function (e) {
             magnite = !magnite;
         };
-        dir2.onclick = function (e) { // обрабатываем касания пальцем ontouchend onclick
+        dir2.onclick = function (e) {
             dir = !dir;
-        };
+        };*/
 
-        var direction = 6.3;
-        canvas.onmousemove = function drawIfPressed(e) {
-            px = (e.pageX - canvas.offsetLeft) / 1 | 0;
-            py = (e.pageY - canvas.offsetTop) / 1 | 0;
-            if (e.buttons > 0) {
-                x.push(px);
-                y.push(py);
-
-                var step = 5;
-
-                direction = direction % 6.3;
-                if (dir) {
-                    direction = Math.random() * 6.3;
-                } else {
-                    direction += 0.5;
-                }
-                vx.push(step * Math.sin(direction));
-                vy.push(step * Math.sin(direction - 90));
-                colors.push(50);//Math.round(25 + (Math.random() * 200)));
-                //mag.textContent = '' +  direction;
-               
-                //
-            }
-        }
+        
+        /*canvas.onmousemove = function drawIfPressed(e) {
+        }*/
     </script>
 </body>
 </html>
